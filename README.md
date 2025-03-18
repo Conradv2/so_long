@@ -24,3 +24,6 @@ P -> player's starting point, when moving character this position will be change
 1101110000001
 10000000000E1
 1111111111111
+
+
+~~~~~~~~~~~~~
