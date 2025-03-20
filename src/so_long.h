@@ -28,5 +28,6 @@ typedef struct s_textures
 {
 }	t_game_textures;
 int		ft_keysym(int keysym, t_game_window *window_ptr);
-void	ft_color_screen (t_game_window *window_ptr);
+int		ft_render_window(t_game_window *window_ptr);
+void	ft_color_screen(t_game_window *window_ptr);
 #endif

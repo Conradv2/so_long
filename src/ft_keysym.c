@@ -39,4 +39,3 @@ int	ft_keysym(int keysym, t_game_window *window_ptr)
 		ft_color_screen(window_ptr);
 	return (0);
 }
-
