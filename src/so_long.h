@@ -30,5 +30,6 @@ typedef struct s_game
 }	t_game;
 
 void	ft_render_window(t_game *window);
+void	ft_game_loop(t_game *game);
 int		ft_key_input(int keysym, t_game *game);
 #endif
