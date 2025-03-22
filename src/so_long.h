@@ -10,3 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SO_LONG_H
+# define SO_LONG_H
+
+# include "../minilibx-linux/mlx.h"
+# include "stdlib.h"
+# include "X11/keysym.h"
+# include "stdio.h"
+# include "unistd.h"
+
+typedef struct s_texture
+{
+}	t_texture;
+
+typedef struct s_game
+{
+	void	*mlx;
+	void	*mlx_win;
+}	t_game;
+
+void	ft_render_window(t_game *window);
+void	ft_key_input(int keysym, t_game *game);
+
+#endif
