@@ -18,8 +18,7 @@ void	ft_render_window(t_game *window)
 	if (window->mlx == NULL)
 	{
 		perror("Error: mlx returned NULL. Closing...");
-		mlx_destroy_display(window->mlx);
-		free(window->mlx);
+		exit(1);
 	}
 	window->mlx_win = mlx_new_window(window->mlx,
 			1280, 720,
@@ -27,8 +26,8 @@ void	ft_render_window(t_game *window)
 	if (window->mlx_win == NULL)
 	{
 		perror("Error: mlx_win returned NULL. Closing...");
-		mlx_destroy_window(window->mlx, window->mlx_win);
 		mlx_destroy_display(window->mlx);
 		free(window->mlx);
+		exit(1);
 	}
 }
