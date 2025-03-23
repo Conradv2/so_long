@@ -18,6 +18,7 @@
 # include "X11/keysym.h"
 # include "stdio.h"
 # include "unistd.h"
+#include "get_next_line.h"
 
 typedef struct s_texture
 {
