@@ -12,23 +12,23 @@
 
 #include "so_long.h"
 
-char	**ft_fill_arr(t_map *map)
+void	ft_fill_arr(t_game *game)
 {
 	int	j;
 
 	j = 0;
-	map->fd_map = open("map.ber", O_RDONLY);
-	map->i = 0;
-	while ((map->line = get_next_line(map->fd_map)) != NULL)
+	game->map.fd_map = open("map.ber", O_RDONLY);
+	game->map.i = 0;
+	//this while needs to be rebuilt, i cant have assign in control structure
+	while ((game->map.line = get_next_line(game->map.fd_map)) != NULL)
 	{
 		j = 0;
-		while (j < map->column)
+		while (j < game->map.column)
 		{
-			map->map_arr[map->i][j] = map->line[j];
+			game->map.map_arr[game->map.i][j] = game->map.line[j];
 			j++;
 		}
-		map->i++;
-		free(map->line);
+		game->map.i++;
+		free(game->map.line);
 	}
-	return (map->map_arr);
 }

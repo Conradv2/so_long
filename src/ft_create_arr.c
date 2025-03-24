@@ -13,26 +13,26 @@
 #include "so_long.h"
 #include "ft_create_arr_utils.h"
 
-char	**ft_create_arr(t_map *map)
+void	ft_create_arr(t_game *game)
 {
-	map->i = 0;
-	map->row = 0;
-	map->fd_map = open("maps/map.ber", O_RDONLY);
-	if (map->fd_map < 0)
+	game->map.i = 0;
+	game->map.row = 0;
+	game->map.fd_map = open("maps/map.ber", O_RDONLY);
+	if (game->map.fd_map < 0)
 	{
 		perror("Error while loading a map...");
 		exit(1);
 	}
-	ft_get_col_row(map);
-	map->map_arr = (char **)malloc(map->row * sizeof(char *));
-	if (map->map_arr == NULL)
+	ft_get_col_row(&game->map);
+	game->map.map_arr = (char **)malloc(game->map.row * sizeof(char *));
+	if (game->map.map_arr == NULL)
 		exit (1);
-	while (map->i++ < map->row)
+	while (game->map.i < game->map.row)
 	{
-		map->map_arr[map->i] = (char *)malloc(map->column * sizeof(char));
-		ft_malloc_check (map);
+		game->map.map_arr[game->map.i] = (char *)malloc(game->map.column * sizeof(char));
+		ft_malloc_check (&game->map);
+		game->map.i++;
 	}
-	close(map->fd_map);
-	return (map->map_arr);
+	close(game->map.fd_map);
 }
 // i mean it works like i wanted it to work
