@@ -46,7 +46,7 @@ typedef struct s_game
 void	ft_render_window(t_game *window);
 void	ft_game_loop(t_game *game);
 char	**ft_create_arr(t_map *map); // <--this returns a pointer to a 2d array that i just create;
-char	**ft_fill_arr(void); // <--this fills created array with elements in a map.ber
+char	**ft_fill_arr(t_map *map); // <--this fills created array with elements in a map.ber
 void	ft_print_arr(t_game *game); // <--not that neccesary at this point but nice to have for testing;
 void	ft_handle_map(t_game *game); // <-- this will handle map buff creation and filling;
 void	ft_free_arr(t_game *game); // <--this will free the memory of created array at the end of a program;
