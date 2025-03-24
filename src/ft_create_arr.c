@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "ft_create_arr_utils.h"
 
 char	**ft_create_arr(t_map *map)
 {
@@ -22,18 +23,15 @@ char	**ft_create_arr(t_map *map)
 		perror("Error while loading a map...");
 		exit(1);
 	}
-	while (1)
-	{
-		map->line = get_next_line(map->fd_map);
-		if (map->line == NULL)
-			break ;
-		map->column = ft_strlen(map->line);
-		map->row++;
-		free(map->line);
-	}
+	ft_get_col_row(map);
 	map->map_arr = (char **)malloc(map->row * sizeof(char *));
-	while (map->i < map->row)
-		map->map_arr[map->i++] = (char *)malloc(map->column * sizeof(char));
+	if (map->map_arr == NULL)
+		exit (1);
+	while (map->i++ < map->row)
+	{
+		map->map_arr[map->i] = (char *)malloc(map->column * sizeof(char));
+		ft_malloc_check (map);
+	}
 	close(map->fd_map);
 	return (map->map_arr);
 }
