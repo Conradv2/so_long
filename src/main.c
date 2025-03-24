@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "../ft_printf/ft_printf.h"
-#include <fcntl.h>
 
 /*
  1 -> wall
@@ -25,18 +23,11 @@
 int	main(void)
 {
 	t_game	game;
-	int		fd_map;
-	// char	**map;
-	char	*line;
+	// t_map	map;
 
-	fd_map = open("maps/map.ber", O_RDONLY);
-	if (fd_map < 0)
-		perror("Error while loading map");
-	while((line = get_next_line(fd_map)) != NULL)
-	{
-		ft_printf("%s", line);
-		free(line);
-	}
+	// game.map.map_arr = ft_create_arr(&map);
+	ft_handle_map(&game);
+	ft_free_arr(&game);
 	ft_render_window(&game);
 	ft_game_loop(&game);
 	return (0);
