@@ -24,3 +24,7 @@ P -> player's starting point, when moving character this position will be change
 1101110000001
 10000000000E1
 1111111111111
+
+need to check for initializing memory
+it looks like at some point the memory is not initialized as it should be
+and trying to print it gives rubbish
