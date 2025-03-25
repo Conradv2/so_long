@@ -15,7 +15,6 @@
 void	ft_free_arr(t_game *game)
 {
 	game->map.i = 0;
-
 	while (game->map.i < game->map.row)
 	{
 		free(game->map.map_arr[game->map.i]);
