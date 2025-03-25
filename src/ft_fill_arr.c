@@ -17,7 +17,7 @@ void	ft_fill_arr(t_game *game)
 	int	j;
 
 	j = 0;
-	game->map.fd_map = open("map.ber", O_RDONLY);
+	game->map.fd_map = open("maps/map.ber", O_RDONLY);
 	if (game->map.fd_map < 0)
 	{
 		perror("ft_fill_array: file doesn't exist");

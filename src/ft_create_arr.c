@@ -35,5 +35,6 @@ void	ft_create_arr(t_game *game)
 		game->map.i++;
 	}
 	close(game->map.fd_map);
+	ft_fill_arr(game);
 }
 // i mean it works like i wanted it to work
