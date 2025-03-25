@@ -14,15 +14,28 @@
 
 void	ft_get_col_row(t_map *map)
 {
+	int	tmp_column;
+
+	tmp_column = 0;
 	while (1)
 	{
 		map->line = get_next_line(map->fd_map);
 		if (map->line == NULL)
 			break ;
 		map->column = ft_strlen(map->line) - 1;
+		if (tmp_column == 0)
+			tmp_column = map->column;
+		/*if (tmp_column != 0 && tmp_column != map->column)
+		{
+			perror("Map is missing a wall...");
+			free(map->line);
+			exit(1);
+		}*/
 		map->row++;
 		free(map->line);
 	}
+	ft_printf("map->column = %d\n", map->column);
+	ft_printf("tmp_column = %d\n", tmp_column);
 }
 
 void	ft_malloc_check(t_map *map)
