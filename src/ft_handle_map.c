@@ -14,6 +14,9 @@
 
 void	ft_handle_map(t_game *game)
 {
+	//ft_check_map(); <-- this is not in so_long.h yet,
+	// this function mmight just be opened at the start of the program
+	// check for map validation and upon error exit safely;
 	ft_create_arr (game);
 	ft_print_arr(game);
 	// ft_check_arr(game);
