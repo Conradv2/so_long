@@ -17,11 +17,13 @@ void	ft_fill_arr(t_game *game)
 	int	j;
 
 	j = 0;
-	game->map.fd_map = open("map.ber", O_RDONLY);
+	game->map.fd_map = open("maps/map.ber", O_RDONLY);
 	game->map.i = 0;
-	//this while needs to be rebuilt, i cant have assign in control structure
-	while ((game->map.line = get_next_line(game->map.fd_map)) != NULL)
+	while (1)
 	{
+		game->map.line = get_next_line(game->map.fd_map);
+		if (game->map.line == NULL)
+			break ;
 		j = 0;
 		while (j < game->map.column)
 		{
@@ -31,4 +33,5 @@ void	ft_fill_arr(t_game *game)
 		game->map.i++;
 		free(game->map.line);
 	}
+	close(game->map.fd_map);
 }
