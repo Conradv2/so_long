@@ -15,6 +15,5 @@
 void	ft_handle_map(t_game *game)
 {
 	ft_create_arr (game);
-	ft_fill_arr(game);
 	ft_print_arr(game);
 }
