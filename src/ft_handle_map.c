@@ -14,9 +14,7 @@
 
 void	ft_handle_map(t_game *game)
 {
-
 	ft_create_arr (game);
 	ft_fill_arr(game);
-	// game->map.map_arr = ft_fill_arr(&map); <-- this later also
-	// ft_print_arr(game); //<--this later
+	ft_print_arr(game);
 }
