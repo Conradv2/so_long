@@ -29,7 +29,8 @@ void	ft_create_arr(t_game *game)
 		exit (1);
 	while (game->map.i < game->map.row)
 	{
-		game->map.map_arr[game->map.i] = (char *)malloc(game->map.column * sizeof(char));
+		game->map.map_arr[game->map.i] = (char *)malloc
+			(game->map.column * sizeof(char));
 		ft_malloc_check (&game->map);
 		game->map.i++;
 	}
