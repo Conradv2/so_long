@@ -28,3 +28,7 @@ P -> player's starting point, when moving character this position will be change
 need to check for initializing memory
 it looks like at some point the memory is not initialized as it should be
 and trying to print it gives rubbish
+
+
+need to check the map before appending it into buffer
+so that upon error it wont break apart and be complicated
