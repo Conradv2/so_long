@@ -19,7 +19,7 @@ void	ft_get_col_row(t_map *map)
 		map->line = get_next_line(map->fd_map);
 		if (map->line == NULL)
 			break ;
-		map->column = ft_strlen(map->line);
+		map->column = ft_strlen(map->line) - 1;
 		map->row++;
 		free(map->line);
 	}
