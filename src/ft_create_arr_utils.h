@@ -14,7 +14,7 @@
 # define FT_CREATE_ARR_UTILS_H
 # include "so_long.h"
 
-void	ft_get_col_row(t_map *map);
+void	ft_get_col_row(t_game *game);
 void	ft_malloc_check(t_map *map);
 void	ft_map_init(t_map *map);
 
