@@ -11,18 +11,14 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "ft_create_arr_utils.h"
 
 void	ft_fill_arr(t_game *game)
 {
 	int	j;
 
 	j = 0;
-	game->map.fd_map = open("maps/map.ber", O_RDONLY);
-	if (game->map.fd_map < 0)
-	{
-		perror("ft_fill_array: file doesn't exist");
-		exit(1);
-	}
+	ft_map_init(&game->map);	
 	game->map.i = 0;
 	while (1)
 	{
