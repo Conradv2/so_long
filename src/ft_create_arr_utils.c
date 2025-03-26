@@ -28,8 +28,6 @@ void	ft_get_col_row(t_map *map)
 		map->row++;
 		free(map->line);
 	}
-	ft_printf("map->column = %d\n", map->column);
-	ft_printf("tmp_column = %d\n", tmp_column);
 }
 
 void	ft_malloc_check(t_map *map)
