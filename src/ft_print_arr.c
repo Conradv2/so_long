@@ -23,10 +23,10 @@ void	ft_print_arr(t_game *game)
 		j = 0;
 		while (j < game->map.column)
 		{
-			printf("%c", game->map.map_arr[game->map.i][j]);
+			ft_printf("%c", game->map.map_arr[game->map.i][j]);
 			j++;
 		}
-		printf("\n");
+		ft_printf("\n");
 		game->map.i++;
 	}
 }
