@@ -12,21 +12,21 @@
 
 #include "so_long.h"
 
-void	ft_get_col_row(t_map *map)
+void	ft_get_col_row(t_game *game)
 {
 	int	tmp_column;
 
 	tmp_column = 0;
 	while (1)
 	{
-		map->line = get_next_line(map->fd_map);
-		if (map->line == NULL)
+		game->map.line = get_next_line(game->map.fd_map);
+		if (game->map.line == NULL)
 			break ;
-		map->column = ft_strlen(map->line) - 1;
+		game->map.column = ft_strlen(game->map.line) - 1;
 		if (tmp_column == 0)
-			tmp_column = map->column;
-		map->row++;
-		free(map->line);
+			tmp_column = game->map.column;
+		game->map.row++;
+		free(game->map.line);
 	}
 }
 
