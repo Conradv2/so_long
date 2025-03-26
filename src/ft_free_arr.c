@@ -17,8 +17,10 @@ void	ft_free_arr(t_game *game)
 	game->map.i = 0;
 	while (game->map.i < game->map.row)
 	{
+		ft_printf("Freeing row arr[%d]\n", game->map.i);
 		free(game->map.map_arr[game->map.i]);
 		game->map.i++;
 	}
+	ft_printf("Freeing **map_arr pointer %d\n", game->map.map_arr);
 	free(game->map.map_arr);
 }
