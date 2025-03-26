@@ -18,7 +18,7 @@ void	ft_fill_arr(t_game *game)
 	int	j;
 
 	j = 0;
-	ft_map_init(&game->map);	
+	ft_map_init(&game->map);
 	game->map.i = 0;
 	while (1)
 	{
