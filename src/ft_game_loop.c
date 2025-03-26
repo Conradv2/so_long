@@ -15,7 +15,6 @@
 void	ft_game_loop(t_game *game)
 {
 	mlx_key_hook(game->mlx_win, ft_key_input, game);
-	// ft_free_arr(game); <-- its the only place to free memory and not get still reachable info in valgrind xdd
 	mlx_loop(game->mlx);
 	mlx_destroy_window(game->mlx, game->mlx_win);
 	mlx_destroy_display(game->mlx);
