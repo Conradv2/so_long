@@ -19,6 +19,7 @@ int	ft_key_input(int keysym, t_game *game)
 	if (keysym == XK_Escape)
 	{
 		ft_printf("Pressed Esc, closing game!\n");
+		ft_free_arr(game);
 		mlx_destroy_window(game->mlx, game->mlx_win);
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);
