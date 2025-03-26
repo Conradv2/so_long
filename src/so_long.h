@@ -29,6 +29,7 @@ typedef struct s_texture
 typedef struct s_map
 {
 	char	**map_arr;
+	char	*file_path; // <--ths will be set in the ft_handle_map
 	char	*line;// <--testing
 	int		row;
 	int		column;
