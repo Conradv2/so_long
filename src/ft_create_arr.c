@@ -15,14 +15,7 @@
 
 void	ft_create_arr(t_game *game)
 {
-	game->map.i = 0;
-	game->map.row = 0;
-	game->map.fd_map = open("maps/map.ber", O_RDONLY);
-	if (game->map.fd_map < 0)
-	{
-		perror("Error while loading a map...");
-		exit(1);
-	}
+	ft_map_init(&game->map);
 	ft_get_col_row(&game->map);
 	game->map.map_arr = (char **)malloc(game->map.row * sizeof(char *));
 	if (game->map.map_arr == NULL)

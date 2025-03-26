@@ -16,5 +16,6 @@
 
 void	ft_get_col_row(t_map *map);
 void	ft_malloc_check(t_map *map);
+void	ft_map_init(t_map *map);
 
 #endif

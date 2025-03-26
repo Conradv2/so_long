@@ -25,12 +25,6 @@ void	ft_get_col_row(t_map *map)
 		map->column = ft_strlen(map->line) - 1;
 		if (tmp_column == 0)
 			tmp_column = map->column;
-		/*if (tmp_column != 0 && tmp_column != map->column)
-		{
-			perror("Map is missing a wall...");
-			free(map->line);
-			exit(1);
-		}*/
 		map->row++;
 		free(map->line);
 	}
@@ -49,5 +43,17 @@ void	ft_malloc_check(t_map *map)
 			free(map->map_arr[j]);
 		free (map->map_arr);
 		exit (1);
+	}
+}
+
+void	ft_map_init(t_map *map)
+{
+	map->i = 0;
+	map->row = 0;
+	map->fd_map = open("maps/map.ber", O_RDONLY);
+	if (map->fd_map < 0)
+	{
+		perror("Error while loading a map...");
+		exit(1);
 	}
 }
