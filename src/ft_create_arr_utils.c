@@ -25,9 +25,13 @@ void	ft_get_col_row(t_game *game)
 		game->map.column = ft_strlen(game->map.line) - 1;
 		if (tmp_column == 0)
 			tmp_column = game->map.column;
+		if (tmp_column != game->map.column)
+			game->map.column = tmp_column;
 		game->map.row++;
 		free(game->map.line);
 	}
+	ft_printf("column = %d\n", game->map.column);
+	ft_printf("tmp_column = %d\n", tmp_column);
 }
 
 void	ft_malloc_check(t_map *map)
