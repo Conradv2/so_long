@@ -26,7 +26,12 @@ void	ft_get_col_row(t_game *game)
 		if (tmp_column == 0)
 			tmp_column = game->map.column;
 		if (tmp_column != game->map.column)
-			game->map.column = tmp_column;
+		{
+			perror("Column lengths are not equal...");
+			free(game->map.line);
+			close(game->map.fd_map);
+			exit(1);
+		}
 		game->map.row++;
 		free(game->map.line);
 	}
