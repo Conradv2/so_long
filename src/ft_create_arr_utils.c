@@ -14,8 +14,10 @@
 
 void	ft_get_col_row(t_game *game)
 {
+	int	is_correct;
 	int	tmp_column;
 
+	is_correct = 0;
 	tmp_column = 0;
 	while (1)
 	{
@@ -26,17 +28,16 @@ void	ft_get_col_row(t_game *game)
 		if (tmp_column == 0)
 			tmp_column = game->map.column;
 		if (tmp_column != game->map.column)
-		{
-			perror("Column lengths are not equal...");
-			free(game->map.line);
-			close(game->map.fd_map);
-			exit(1);
-		}
+			is_correct = 1;
 		game->map.row++;
 		free(game->map.line);
 	}
-	ft_printf("column = %d\n", game->map.column);
-	ft_printf("tmp_column = %d\n", tmp_column);
+	if (is_correct == 1)
+	{
+		perror("Column lengths are not equal...");
+		close(game->map.fd_map);
+		exit(1);
+	}
 }
 
 void	ft_malloc_check(t_map *map)
