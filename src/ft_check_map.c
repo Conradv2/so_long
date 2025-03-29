@@ -12,6 +12,8 @@
 
 #include "so_long.h"
 
+
+
 void	ft_check_map(t_game *game)
 {
 	if (ft_init_player(game) != 1)
@@ -24,6 +26,7 @@ void	ft_check_map(t_game *game)
 	{
 		perror("There is too little collectibles to open the exit...");
 		ft_free_arr(game);
+		free(game->collectible);
 		exit(1);
 	}
 }
