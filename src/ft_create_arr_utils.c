@@ -42,13 +42,12 @@ void	ft_get_col_row(t_game *game)
 
 void	ft_malloc_check(t_map *map)
 {
-	int	j;
 
-	j = 0;
+	map->j = 0;
 	if (map->map_arr[map->i] == NULL)
 	{
-		while (j++ < map->i)
-			free(map->map_arr[j]);
+		while (map->j++ < map->i)
+			free(map->map_arr[map->j]);
 		free (map->map_arr);
 		exit (1);
 	}
