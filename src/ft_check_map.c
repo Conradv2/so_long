@@ -12,8 +12,6 @@
 
 #include "so_long.h"
 
-
-
 void	ft_check_map(t_game *game)
 {
 	if (ft_init_player(game) != 1)
