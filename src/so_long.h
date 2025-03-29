@@ -55,6 +55,7 @@ typedef struct s_game
 	t_map		map;
 	t_entity	player;
 	t_entity	exit;
+	t_entity	wall;
 	t_entity	*collectible;
 }	t_game;
 
