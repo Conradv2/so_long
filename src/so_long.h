@@ -50,6 +50,7 @@ typedef struct s_game
 	void		*mlx_win;
 	t_map		map;
 	t_entity	player;
+	t_entity	exit;
 	t_entity	*collectible;
 }	t_game;
 
