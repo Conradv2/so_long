@@ -12,19 +12,18 @@
 
 #include "so_long.h"
 
+// void	ft_init_collectible(t_game *game)
+// {
+
+// }
+
 void	ft_check_map(t_game *game)
 {
-	int	j;
-
-	game->map.i = 0;
-	while(game->map.i < game->map.row)
+	if (ft_init_player(game) != 1)
 	{
-		j = 0;
-		while(j < game->map.column)
-		{
-			// if (game->map.map_arr[i][j] )
-			j++;
-		}
-		game->map.i++;
+		perror("There is too much or not a single player!...");
+		ft_free_arr(game);
+		exit(1);
 	}
 }
+	// ft_init_collectible(game);

@@ -12,10 +12,12 @@
 
 #include "so_long.h"
 
-void	ft_init_player(t_game *game)
+int	ft_init_player(t_game *game)
 {
+	int	count;
+
+	count = 0;
 	game->map.i = 0;
-	game->player.count = 0;
 	while (game->map.i < game->map.row)
 	{
 		game->map.j = 0;
@@ -25,16 +27,11 @@ void	ft_init_player(t_game *game)
 			{
 				game->player.y = game->map.i;
 				game->player.x = game->map.j;
-				game->player.count++;
+				count++;
 			}
 			game->map.j++;
 		}
 		game->map.i++;
 	}
-	if (game->player.count != 1)
-	{
-		perror("There is too much or not a single player!...");
-		ft_free_arr(game);
-		exit(1);
-	}
+	return (count);
 }
