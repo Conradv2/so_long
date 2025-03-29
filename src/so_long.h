@@ -24,12 +24,16 @@
 
 typedef struct s_texture
 {
+	int		width;
+	int		height;
+	char	*img_path;
 }	t_texture;
 
 typedef struct s_entity
 {
-	int		x;
-	int		y;
+	int			x;
+	int			y;
+	t_texture	img;
 }	t_entity;
 
 typedef struct s_map
