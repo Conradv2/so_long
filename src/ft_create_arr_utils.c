@@ -42,7 +42,6 @@ void	ft_get_col_row(t_game *game)
 
 void	ft_malloc_check(t_map *map)
 {
-
 	map->j = 0;
 	if (map->map_arr[map->i] == NULL)
 	{
