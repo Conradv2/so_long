@@ -15,7 +15,6 @@
 
 void	ft_fill_arr(t_game *game)
 {
-
 	game->map.j = 0;
 	ft_map_init(&game->map);
 	game->map.i = 0;
@@ -27,7 +26,9 @@ void	ft_fill_arr(t_game *game)
 		game->map.j = 0;
 		while (game->map.j < game->map.column)
 		{
-			game->map.map_arr[game->map.i][game->map.j] = game->map.line[game->map.j];
+			game->map.map_arr
+			[game->map.i]
+			[game->map.j] = game->map.line[game->map.j];
 			game->map.j++;
 		}
 		game->map.i++;
