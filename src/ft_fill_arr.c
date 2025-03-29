@@ -15,9 +15,8 @@
 
 void	ft_fill_arr(t_game *game)
 {
-	int	j;
 
-	j = 0;
+	game->map.j = 0;
 	ft_map_init(&game->map);
 	game->map.i = 0;
 	while (1)
@@ -25,11 +24,11 @@ void	ft_fill_arr(t_game *game)
 		game->map.line = get_next_line(game->map.fd_map);
 		if (game->map.line == NULL)
 			break ;
-		j = 0;
-		while (j < game->map.column)
+		game->map.j = 0;
+		while (game->map.j < game->map.column)
 		{
-			game->map.map_arr[game->map.i][j] = game->map.line[j];
-			j++;
+			game->map.map_arr[game->map.i][game->map.j] = game->map.line[game->map.j];
+			game->map.j++;
 		}
 		game->map.i++;
 		free(game->map.line);
