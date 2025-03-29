@@ -30,7 +30,10 @@ void	ft_render_window(t_game *window)
 		free(window->mlx);
 		exit(1);
 	}
-	window->wall.img.img = mlx_xpm_file_to_image(window->mlx, "./textures/Wall.xpm", &window->wall.img.width, &window->wall.img.height);
+	window->wall.img.img = mlx_xpm_file_to_image(window->mlx,
+			"./textures/Wall.xpm",
+			&window->wall.img.width,
+			&window->wall.img.height);
 	if (window->wall.img.img == NULL)
 	{
 		perror ("CHUJ");
@@ -41,9 +44,13 @@ void	ft_render_window(t_game *window)
 		window->map.j = 0;
 		while (window->map.j < window->map.column)
 		{
-			if(window->map.map_arr[window->map.i][window->map.j] == '1')
+			if (window->map.map_arr[window->map.i][window->map.j] == '1')
 			{
-				mlx_put_image_to_window(window->mlx, window->mlx_win, window->wall.img.img, window->wall.img.width * window->map.j, window->wall.img.height * window->map.i);
+				mlx_put_image_to_window(window->mlx,
+					window->mlx_win,
+					window->wall.img.img,
+					window->wall.img.width * window->map.j,
+					window->wall.img.height * window->map.i);
 			}
 			window->map.j++;
 		}
