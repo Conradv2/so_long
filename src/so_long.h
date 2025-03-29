@@ -30,6 +30,7 @@ typedef struct s_entity
 {
 	int		x;
 	int		y;
+	int		count;
 }	t_entity;
 
 typedef struct s_map
