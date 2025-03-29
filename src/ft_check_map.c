@@ -10,46 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_create_arr_utils.h"
 #include "so_long.h"
 
 void	ft_check_map(t_game *game)
 {
-	ft_printf("Welcome to the rice fields\n");
-	char		tmp;
-	int			j;
-	int			i;
+	int	j;
 
-	j = 0;
-	i = 0;
-	tmp = '1';
-	ft_map_init(&game->map);
-	ft_get_col_row(game);
-	close(game->map.fd_map);
-	ft_map_init(&game->map);
-	while (1)
+	game->map.i = 0;
+	while(game->map.i < game->map.row)
 	{
-		game->map.line = get_next_line(game->map.fd_map);
-		if (game->map.line == NULL)
-		{
-			ft_printf("again gnl fail");
-			break ;
-		}	
-		ft_printf("%s", game->map.line);
 		j = 0;
-		while (j < game->map.row)
+		while(j < game->map.column)
 		{
-			if (tmp != game->map.line[j] && i < game->map.column)
-			{
-				ft_printf("Man, this is bullshit...");
-				free(game->map.line);
-				close(game->map.fd_map);
-				exit(1);
-				i++;
-			}
+			// if (game->map.map_arr[i][j] )
 			j++;
 		}
-		free(game->map.line);
+		game->map.i++;
 	}
-	close(game->map.fd_map);
 }
