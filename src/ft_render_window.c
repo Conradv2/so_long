@@ -35,5 +35,18 @@ void	ft_render_window(t_game *window)
 	{
 		perror ("CHUJ");
 	}
-	mlx_put_image_to_window(window->mlx, window->mlx_win, window->wall.img.img, window->wall.img.width, window->wall.img.height);
+	window->map.i = 0;
+	while (window->map.i < window->map.row)
+	{
+		window->map.j = 0;
+		while (window->map.j < window->map.column)
+		{
+			if(window->map.map_arr[window->map.i][window->map.j] == '1')
+			{
+				mlx_put_image_to_window(window->mlx, window->mlx_win, window->wall.img.img, window->wall.img.width * window->map.j, window->wall.img.height * window->map.i);
+			}
+			window->map.j++;
+		}
+		window->map.i++;
+	}
 }
