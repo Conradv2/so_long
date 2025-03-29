@@ -25,7 +25,6 @@ void	ft_init_player(t_game *game)
 			{
 				game->player.y = game->map.i;
 				game->player.x = game->map.j;
-				ft_printf("Player found!\n");
 				game->player.count++;
 			}
 			game->map.j++;
