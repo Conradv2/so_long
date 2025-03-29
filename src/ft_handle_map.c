@@ -15,6 +15,9 @@
 void	ft_handle_map(t_game *game)
 {
 	ft_create_arr(game);
+	ft_print_arr(game);
+	ft_printf("\n");
 	ft_check_map(game);
+	ft_printf("Exit position: y = [%d] x = [%d]\n", game->exit.y, game->exit.x);
 	ft_print_arr(game);
 }
