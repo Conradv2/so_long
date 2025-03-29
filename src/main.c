@@ -23,12 +23,12 @@
 int	main(void)
 {
 	t_game	game;
-	// t_map	map;
 
-	// game.map.map_arr = ft_create_arr(&map);
 	ft_handle_map(&game);
-	// ft_free_arr(&game);
 	ft_render_window(&game);
 	ft_game_loop(&game);
 	return (0);
 }
+// t_map	map;
+// game.map.map_arr = ft_create_arr(&map);	
+// ft_free_arr(&game);
