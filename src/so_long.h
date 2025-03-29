@@ -30,7 +30,6 @@ typedef struct s_entity
 {
 	int		x;
 	int		y;
-	int		count;
 }	t_entity;
 
 typedef struct s_map
@@ -61,7 +60,8 @@ void	ft_fill_arr(t_game *game);
 void	ft_print_arr(t_game *game);
 void	ft_handle_map(t_game *game);
 void	ft_check_map(t_game *game);
-void	ft_init_player(t_game *game);
+int		ft_init_player(t_game *game);
+void	ft_init_collectible(t_game *game);
 void	ft_free_arr(t_game *game);
 int		ft_exit_game(t_game *game);
 int		ft_key_input(int keysym, t_game *game);
