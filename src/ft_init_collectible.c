@@ -48,10 +48,12 @@ int	ft_collectible_counter(t_game *game)
 int	ft_init_collectible(t_game *game)
 {
 	int	count;
+	int	i;
 
 	count = ft_collectible_counter(game);
 	ft_collectible_arr(game, count);
 	game->map.i = 0;
+	i = 0;
 	while (game->map.i < game->map.row)
 	{
 		game->map.j = 0;
@@ -59,8 +61,8 @@ int	ft_init_collectible(t_game *game)
 		{
 			if (game->map.map_arr[game->map.i][game->map.j] == 'C')
 			{
-				game->collectible[game->map.i].y = game->map.i;
-				game->collectible[game->map.j].x = game->map.j;
+				game->collectible[i].y = game->map.i;
+				game->collectible[i].x = game->map.j;
 			}
 			game->map.j++;
 		}
