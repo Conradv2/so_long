@@ -18,5 +18,6 @@ int	ft_exit_game(t_game *game)
 	mlx_destroy_window(game->mlx, game->mlx_win);
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);
+	free(game->collectible);
 	exit(0);
 }
