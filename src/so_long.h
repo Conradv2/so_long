@@ -70,6 +70,7 @@ void	ft_check_map(t_game *game);
 int		ft_init_player(t_game *game);
 int		ft_init_collectible(t_game *game);
 int		ft_init_exit(t_game *game);
+int		ft_wall_check(t_game *game);
 void	ft_free_arr(t_game *game);
 int		ft_exit_game(t_game *game);
 int		ft_key_input(int keysym, t_game *game);
