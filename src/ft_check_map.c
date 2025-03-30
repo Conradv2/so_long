@@ -12,6 +12,8 @@
 
 #include "so_long.h"
 
+void	ft_path(t_game *game);
+
 void	ft_fun(t_game *game)
 {
 	ft_free_arr(game);
@@ -41,4 +43,9 @@ void	ft_check_map(t_game *game)
 		perror("There is missing wall...");
 		ft_fun(game);
 	}
+	// if (ft_path(game) != 1)
+	// {
+	// 	perror("There is not a valid path...");
+	// 	ft_fun(game);
+	// }
 }
