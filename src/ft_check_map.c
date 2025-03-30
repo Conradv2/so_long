@@ -34,4 +34,11 @@ void	ft_check_map(t_game *game)
 		free(game->collectible);
 		exit(1);
 	}
+	if (ft_wall_check(game) != 1)
+	{
+		perror("There is missing wall...");
+		ft_free_arr(game);
+		free(game->collectible);
+		exit(1);
+	}
 }
