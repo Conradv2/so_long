@@ -12,8 +12,61 @@
 
 #include "so_long.h"
 
-void	ft_path(t_game *game);
+void	ft_free_visited(t_game *game, char **visited)
+{
+	game->map.i = 0;
+	while (game->map.i < game->map.row)
+	{
+		free(visited[game->map.i]);
+		game->map.i++;
+	}
+	free(visited);
+}
 
+char	**ft_map_copy(t_game *game)
+{
+	char	**visited;
+	
+	game->map.i = 0;
+	visited = (char **)malloc(game->map.row * sizeof(char *));
+	while (game->map.i < game->map.row)
+	{
+		visited[game->map.i] = (char *)malloc(game->map.column * sizeof(char));
+		game->map.i++;
+	}
+	game->map.i = 0;
+	while (game->map.i < game->map.row)
+	{
+		game->map.j = 0;
+		while (game->map.j < game->map.column)
+		{
+			visited[game->map.i][game->map.j] = game->map.map_arr[game->map.i][game->map.j];
+			game->map.j++;
+		}
+		game->map.i++;
+	}
+	return (visited);
+}
+
+void	ft_path(t_game *game)
+{
+	char	**visited;
+
+	visited = ft_map_copy(game);
+	ft_printf("\nft_path in ft_check_map\n");
+	game->map.i = 0;
+	while (game->map.i < game->map.row)
+	{
+		game->map.j = 0;
+		while (game->map.j < game->map.column)
+		{
+			ft_printf("%c", visited[game->map.i][game->map.j]);
+			game->map.j++;
+		}
+		game->map.i++;
+	}
+	ft_free_visited(game, visited);
+}
 void	ft_fun(t_game *game)
 {
 	ft_free_arr(game);
@@ -43,6 +96,7 @@ void	ft_check_map(t_game *game)
 		perror("There is missing wall...");
 		ft_fun(game);
 	}
+	ft_path(game);
 	// if (ft_path(game) != 1)
 	// {
 	// 	perror("There is not a valid path...");
