@@ -66,7 +66,7 @@ void	ft_path(t_game *game)
 		ft_printf("\n");
 		game->map.i++;
 	}
-	ft_printf("ft_printf in ft_path in ft_check_map\nvisited arr len = %d\nvisited arr row  = %d\nvisited arr column = %d\n", ft_strlen(visited[0]), game->map.i, game->map.j);
+	ft_printf("ft_printf in ft_path in ft_check_map\nvisited arr row  = %d\nvisited arr column = %d\n", game->map.i, game->map.j);
 	ft_free_visited(game, visited);
 }
 void	ft_fun(t_game *game)
