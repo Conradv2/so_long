@@ -21,7 +21,7 @@ int	ft_wall_check(t_game *game)
 	while (game->map.i < game->map.row)
 	{
 		game->map.j = 0;
-		while (game->map.j < game->map.column - 2)
+		while (game->map.j < game->map.column)
 		{
 			if (!(game->map.map_arr[0][game->map.j] == '1'))
 				is_there = 0;
@@ -29,7 +29,7 @@ int	ft_wall_check(t_game *game)
 				is_there = 0;
 			if (!(game->map.map_arr[game->map.i][0] == '1'))
 				is_there = 0;
-			if (!(game->map.map_arr[game->map.i][game->map.column - 2] == '1'))
+			if (!(game->map.map_arr[game->map.i][game->map.column - 1] == '1'))
 				is_there = 0;
 			game->map.j++;
 		}
