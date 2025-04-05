@@ -63,6 +63,7 @@ void	ft_path(t_game *game)
 			ft_printf("%c", visited[game->map.i][game->map.j]);
 			game->map.j++;
 		}
+		ft_printf("\n");
 		game->map.i++;
 	}
 	ft_free_visited(game, visited);
