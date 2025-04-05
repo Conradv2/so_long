@@ -26,6 +26,7 @@ void	ft_print_arr(t_game *game)
 			ft_printf("%c", game->map.map_arr[game->map.i][j]);
 			j++;
 		}
+		// ft_printf("\n");
 		game->map.i++;
 	}
 }
