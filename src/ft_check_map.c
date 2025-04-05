@@ -40,7 +40,7 @@ char	**ft_map_copy(t_game *game)
 		game->map.j = 0;
 		while (game->map.j < game->map.column)
 		{
-			visited[game->map.i][game->map.j] = game->map.map_arr[game->map.i][game->map.j];
+			visited[game->map.i][game->map.j] = '0';
 			game->map.j++;
 		}
 		game->map.i++;
@@ -53,18 +53,7 @@ void	ft_path(t_game *game)
 	char	**visited;
 
 	visited = ft_map_copy(game);
-	ft_printf("\nft_path in ft_check_map\n");	
-	game->map.i = 0;
-	while (game->map.i < game->map.row)
-	{
-		game->map.j = 0;
-		while (game->map.j < game->map.column)
-		{
-			visited[game->map.i][game->map.j] = '0';
-			game->map.j++;
-		}
-		game->map.i++;
-	}
+	ft_printf("\nft_path in ft_check_map\n");
 	game->map.i = 0;
 	while (game->map.i < game->map.row)
 	{
