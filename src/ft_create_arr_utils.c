@@ -24,7 +24,7 @@ void	ft_get_col_row(t_game *game)
 		game->map.line = get_next_line(game->map.fd_map);
 		if (game->map.line == NULL)
 			break ;
-		game->map.column = ft_strlen(game->map.line);
+		game->map.column = ft_strlen(game->map.line) - 1;
 		if (tmp_column == 0)
 			tmp_column = game->map.column;
 		if (tmp_column != game->map.column)
