@@ -23,6 +23,13 @@ void	ft_free_visited(t_game *game, char **visited)
 	free(visited);
 }
 
+//here i will use the dfs path finding alghoritm to check for valid path from player to the exit
+//and from player to every collectible to the exit;
+void	ft_dfs(void)
+{
+	ft_printf("TEST");
+}
+
 char	**ft_map_copy(t_game *game)
 {
 	char	**visited;
