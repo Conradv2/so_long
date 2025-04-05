@@ -26,7 +26,7 @@ void	ft_free_visited(t_game *game, char **visited)
 char	**ft_map_copy(t_game *game)
 {
 	char	**visited;
-	
+
 	game->map.i = 0;
 	visited = (char **)malloc(game->map.row * sizeof(char *));
 	while (game->map.i < game->map.row)
@@ -69,6 +69,7 @@ void	ft_path(t_game *game)
 	ft_printf("ft_printf in ft_path in ft_check_map\nvisited arr row  = %d\nvisited arr column = %d\n", game->map.i, game->map.j);
 	ft_free_visited(game, visited);
 }
+
 void	ft_fun(t_game *game)
 {
 	ft_free_arr(game);
@@ -99,9 +100,4 @@ void	ft_check_map(t_game *game)
 		ft_fun(game);
 	}
 	ft_path(game);
-	// if (ft_path(game) != 1)
-	// {
-	// 	perror("There is not a valid path...");
-	// 	ft_fun(game);
-	// }
 }
