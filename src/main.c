@@ -25,8 +25,10 @@ int	main(void)
 	t_game	game;
 
 	ft_handle_map(&game);
-	ft_render_window(&game);
-	ft_game_loop(&game);
+	// ft_render_window(&game);
+	// ft_game_loop(&game);
+	free(game.collectible);
+	ft_free_arr(&game);
 	return (0);
 }
 // t_map	map;
