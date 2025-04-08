@@ -27,7 +27,7 @@ int	ft_init_exit(t_game *game)
 			{
 				game->exit.x = game->map.j;
 				game->exit.y = game->map.i;
-				game->map.map_arr[game->map.i][game->map.j] = '0';
+				// game->map.map_arr[game->map.i][game->map.j] = '0';
 				count++;
 			}
 			game->map.j++;
