@@ -25,9 +25,27 @@ void	ft_free_visited(t_game *game, char **visited)
 
 //here i will use the dfs path finding alghoritm to check for valid path from player to the exit
 //and from player to every collectible to the exit;
-void	ft_dfs(void)
+int	ft_dfs(t_game *game, char **visited, int start_y, int start_x, int stop_y, int stop_x)
 {
-	ft_printf("TEST");
+	if (visited[start_y][start_x] == '1' || game->map.map_arr[start_y][start_x] == '1')
+		return (0);
+	// if ((start_y == stop_y) && (start_x == stop_x))
+	// 	return (1);
+	if (game->map.map_arr[start_y][start_x] == game->map.map_arr[stop_y][stop_x])
+	{
+		visited[start_y][start_x] = game->map.map_arr[stop_y][stop_x];
+		return (1);
+	}
+	visited[start_y][start_x] = '1';
+	if (ft_dfs(game, visited, start_y + 1, start_x, stop_y, stop_x))
+		return (1);
+	if (ft_dfs(game, visited, start_y - 1, start_x, stop_y, stop_x))
+		return (1);
+	if (ft_dfs(game, visited, start_y, start_x - 1, stop_y, stop_x))
+		return (1);
+	if (ft_dfs(game, visited, start_y, start_x + 1, stop_y, stop_x))
+		return (1);
+	return (0);
 }
 
 char	**ft_map_copy(t_game *game)
@@ -60,7 +78,26 @@ void	ft_path(t_game *game)
 	char	**visited;
 
 	visited = ft_map_copy(game);
-	ft_printf("\nft_path in ft_check_map\n");
+	// ft_printf("\nft_path in ft_check_map\n");
+	// game->map.i = 0;
+	// while (game->map.i < game->map.row)
+	// {
+	// 	game->map.j = 0;
+	// 	while (game->map.j < game->map.column)
+	// 	{
+	// 		ft_printf("%c", visited[game->map.i][game->map.j]);
+	// 		game->map.j++;
+	// 	}
+	// 	ft_printf("\n");
+	// 	game->map.i++;
+	// }
+	ft_printf("ft_printf in ft_path in ft_check_map\nvisited arr row  = %d\nvisited arr column = %d\n", game->map.i, game->map.j);
+	if (ft_dfs(game, visited, game->player.y, game->player.x, game->exit.y, game->exit.x) == 1)
+		ft_printf("there is a valid path!\n");
+	else 
+		ft_printf("there is not a valid path!\n");
+	ft_printf("ft_printf in ft_path in ft_check_map.c\n");
+	ft_printf("check on visited arr\n");
 	game->map.i = 0;
 	while (game->map.i < game->map.row)
 	{
@@ -73,7 +110,6 @@ void	ft_path(t_game *game)
 		ft_printf("\n");
 		game->map.i++;
 	}
-	ft_printf("ft_printf in ft_path in ft_check_map\nvisited arr row  = %d\nvisited arr column = %d\n", game->map.i, game->map.j);
 	ft_free_visited(game, visited);
 }
 
