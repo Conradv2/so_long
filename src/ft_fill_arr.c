@@ -34,6 +34,6 @@ void	ft_fill_arr(t_game *game)
 		game->map.i++;
 		free(game->map.line);
 	}
-	// game->map.map_arr[game->map.row - 1][game->map.column - 1] = '\0';
 	close(game->map.fd_map);
 }
+// game->map.map_arr[game->map.row - 1][game->map.column - 1] = '\0';
