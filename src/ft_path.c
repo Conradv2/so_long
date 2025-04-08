@@ -100,4 +100,3 @@ void	ft_path(t_game *game)
 	}
 	ft_free_visited(game, visited);
 }
-
