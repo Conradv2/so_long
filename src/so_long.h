@@ -67,6 +67,7 @@ void	ft_fill_arr(t_game *game);
 void	ft_print_arr(t_game *game);
 void	ft_handle_map(t_game *game);
 void	ft_check_map(t_game *game);
+void	ft_path(t_game *game);
 int		ft_init_player(t_game *game);
 int		ft_init_collectible(t_game *game);
 int		ft_init_exit(t_game *game);
