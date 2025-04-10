@@ -23,25 +23,26 @@ void	ft_free_visited(t_game *game, char **visited)
 	free(visited);
 }
 
-int	ft_dfs(t_game *game, char **visited, int start_y, int start_x, int stop_y, int stop_x)
+int	ft_dfs(t_game *game, char **visited, int start_y, int start_x)
 {
 	if (visited[start_y][start_x] == '1' ||
 		game->map.map_arr[start_y][start_x] == '1')
 		return (0);
 	if (game->map.map_arr[start_y][start_x] ==
-		game->map.map_arr[stop_y][stop_x])
+		game->map.map_arr[game->exit.y][game->exit.x])
 	{
-		visited[start_y][start_x] = game->map.map_arr[stop_y][stop_x];
+		visited[start_y][start_x] = game->map.map_arr
+		[game->exit.y][game->exit.x];
 		return (1);
 	}
 	visited[start_y][start_x] = '1';
-	if (ft_dfs(game, visited, start_y + 1, start_x, stop_y, stop_x))
+	if (ft_dfs(game, visited, start_y + 1, start_x))
 		return (1);
-	if (ft_dfs(game, visited, start_y - 1, start_x, stop_y, stop_x))
+	if (ft_dfs(game, visited, start_y - 1, start_x))
 		return (1);
-	if (ft_dfs(game, visited, start_y, start_x - 1, stop_y, stop_x))
+	if (ft_dfs(game, visited, start_y, start_x - 1))
 		return (1);
-	if (ft_dfs(game, visited, start_y, start_x + 1, stop_y, stop_x))
+	if (ft_dfs(game, visited, start_y, start_x + 1))
 		return (1);
 	return (0);
 }
@@ -80,10 +81,10 @@ void	ft_path(t_game *game)
 	ft_printf("visited arr row  = %d\n", game->map.i);
 	ft_printf("visited arr column = %d\n", game->map.j);
 	if (ft_dfs(game, visited, game->player.y,
-			game->player.x, game->exit.y, game->exit.x) == 1)
-		ft_printf("there is a valid path!\n");
+			game->player.x) == 1)
+		ft_printf("\n\n\n\nTHERE IS A VALID PATH!\n\n\n\n");
 	else
-		ft_printf("there is not a valid path!\n");
+		ft_printf("\n\n\n\nTHERE IS NOT A VALID PATH!\n\n\n\n");
 	ft_printf("ft_printf in ft_path in ft_check_map.c\n");
 	ft_printf("check on visited arr\n");
 	game->map.i = 0;
