@@ -34,6 +34,7 @@ typedef struct s_entity
 {
 	int			x;
 	int			y;
+	int			count;
 	t_texture	img;
 }	t_entity;
 
