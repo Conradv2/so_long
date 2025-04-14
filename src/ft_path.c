@@ -43,12 +43,12 @@ int	ft_exit_col_path_check(t_game *game, char **visited)
 	}
 	if (visited[game->exit.y][game->exit.x] != '1')
 	{
-		perror("\nTHERE IS NO PATH TO EXIT\n");
+		perror("THERE IS NO PATH TO EXIT");
 		return (1);
 	}
 	if (count != game->collectible->count)
 	{
-		perror("\nTHERE IS NO PATH TO COLLECTIBLES\n");
+		perror("THERE IS NO PATH TO COLLECTIBLES");
 		return (1);
 	}
 	return (count);
