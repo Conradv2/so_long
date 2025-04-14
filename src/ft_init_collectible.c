@@ -67,5 +67,8 @@ int	ft_init_collectible(t_game *game)
 		}
 		game->map.i++;
 	}
+	game->collectible->count = count;
+	// ft_printf("\nINFO FROM ft_init_collectible.c\n");
+	// ft_printf("\nthe amount of collectibles is = %d\n", game->collectible->count);
 	return (count);
 }
