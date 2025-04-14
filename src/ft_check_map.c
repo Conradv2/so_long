@@ -41,5 +41,6 @@ void	ft_check_map(t_game *game)
 		perror("There is missing wall...");
 		ft_fun(game);
 	}
-	ft_path(game);
+	if (ft_path(game) == 1)
+		ft_fun(game);
 }
