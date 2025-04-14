@@ -23,6 +23,28 @@ void	ft_free_visited(t_game *game, char **visited)
 	free(visited);
 }
 
+// int	ft_collect_path(t_game *game, char **visited)
+// {
+// 	int	count;
+
+// 	count = 0;
+// 	game->map.i = 0;
+// 	while (game->map.i < game->collectible->count)
+// 	{
+// 		if (visited[game->collectible[game->map.i].y][game->collectible[game->map.i].x] == '1')
+// 		{
+// 			ft_printf("\nCOLLECTIBLE AT\nvisited");
+// 			ft_printf("[%d][%d] = ", game->collectible[game->map.i].y, game->collectible[game->map.i].x);
+// 			ft_printf("%c\n", visited[game->collectible[game->map.i].y][game->collectible[game->map.i].x]);
+// 			count++;
+// 		}
+// 		game->map.i++;
+// 	}
+// 	if (count == game->collectible->count)
+// 		return (count);
+// 	return (1);
+// }
+
 int	ft_dfs(t_game *game, char **visited, int start_y, int start_x)
 {
 	if (visited[start_y][start_x] == '1' ||
@@ -36,13 +58,13 @@ int	ft_dfs(t_game *game, char **visited, int start_y, int start_x)
 		return (1);
 	}
 	visited[start_y][start_x] = '1';
-	if (ft_dfs(game, visited, start_y + 1, start_x))
+	if (ft_dfs(game, visited, start_y + 1, start_x) == 1)
 		return (1);
-	if (ft_dfs(game, visited, start_y - 1, start_x))
+	if (ft_dfs(game, visited, start_y - 1, start_x) == 1)
 		return (1);
-	if (ft_dfs(game, visited, start_y, start_x - 1))
+	if (ft_dfs(game, visited, start_y, start_x - 1) == 1)
 		return (1);
-	if (ft_dfs(game, visited, start_y, start_x + 1))
+	if (ft_dfs(game, visited, start_y, start_x + 1) == 1)
 		return (1);
 	return (0);
 }
@@ -99,5 +121,7 @@ void	ft_path(t_game *game)
 		ft_printf("\n");
 		game->map.i++;
 	}
+	// ft_printf("the amount of collectibles = %d\n", ft_collect_path(game, visited));
+	// ft_printf("\n\n\nCOLLECTILBES TESTESTEST = %d\n\n\n", game->collectible[0].count);
 	ft_free_visited(game, visited);
 }
