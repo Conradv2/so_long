@@ -23,50 +23,66 @@ void	ft_free_visited(t_game *game, char **visited)
 	free(visited);
 }
 
-// int	ft_collect_path(t_game *game, char **visited)
-// {
-// 	int	count;
+int	ft_exit_col_path_check(t_game *game, char **visited)
+{
+	int	count;
 
-// 	count = 0;
-// 	game->map.i = 0;
-// 	while (game->map.i < game->collectible->count)
-// 	{
-// 		if (visited[game->collectible[game->map.i].y][game->collectible[game->map.i].x] == '1')
-// 		{
-// 			ft_printf("\nCOLLECTIBLE AT\nvisited");
-// 			ft_printf("[%d][%d] = ", game->collectible[game->map.i].y, game->collectible[game->map.i].x);
-// 			ft_printf("%c\n", visited[game->collectible[game->map.i].y][game->collectible[game->map.i].x]);
-// 			count++;
-// 		}
-// 		game->map.i++;
-// 	}
-// 	if (count == game->collectible->count)
-// 		return (count);
-// 	return (1);
-// }
+	count = 0;
+	game->map.i = 0;
+	while (game->map.i < game->collectible->count)
+	{
+		if (visited[game->collectible[game->map.i].y]
+			[game->collectible[game->map.i].x] == '1')
+		{
+			// ft_printf("\nCOLLECTIBLE AT\nvisited");
+			// ft_printf("[%d][%d] = ", game->collectible[game->map.i].y, game->collectible[game->map.i].x);
+			// ft_printf("%c\n", visited[game->collectible[game->map.i].y][game->collectible[game->map.i].x]);
+			count++;
+		}
+		game->map.i++;
+	}
+	if (visited[game->exit.y][game->exit.x] != '1')
+	{
+		perror("\nTHERE IS NO PATH TO EXIT\n");
+		return (1);
+	}
+	if (count != game->collectible->count)
+	{
+		perror("\nTHERE IS NO PATH TO COLLECTIBLES\n");
+		return (1);
+	}
+	return (count);
+}
 
 int	ft_dfs(t_game *game, char **visited, int start_y, int start_x)
 {
 	if (visited[start_y][start_x] == '1' ||
 		game->map.map_arr[start_y][start_x] == '1')
-		return (0);
-	if (game->map.map_arr[start_y][start_x] ==
-		game->map.map_arr[game->exit.y][game->exit.x])
-	{
-		visited[start_y][start_x] = game->map.map_arr
-		[game->exit.y][game->exit.x];
 		return (1);
-	}
+	// if (game->map.map_arr[start_y][start_x] ==
+	// 	game->map.map_arr[game->exit.y][game->exit.x])
+	// {
+	// 	visited[start_y][start_x] = game->map.map_arr
+	// 	[game->exit.y][game->exit.x];
+	// 	return (0); // <-- this value on 1 makes the alghoritm check for all ways on the map, not looking for E
+	// 				//but printing it on the visited arr
+	// 				//so technically i can just check for the whole array and then check if there is E in visited arr;
+	// }
+	// i need to 
+	// remove checking for exit in this function
+	// and instead just fill the map with ones
+	// then in one or two functions just check if on visited array
+	// that has now all paths filled with 1's check it there is C or E on a given 1
 	visited[start_y][start_x] = '1';
-	if (ft_dfs(game, visited, start_y + 1, start_x) == 1)
-		return (1);
-	if (ft_dfs(game, visited, start_y - 1, start_x) == 1)
-		return (1);
-	if (ft_dfs(game, visited, start_y, start_x - 1) == 1)
-		return (1);
-	if (ft_dfs(game, visited, start_y, start_x + 1) == 1)
-		return (1);
-	return (0);
+	if (ft_dfs(game, visited, start_y + 1, start_x) == 0)
+		return (0);
+	if (ft_dfs(game, visited, start_y - 1, start_x) == 0)
+		return (0);
+	if (ft_dfs(game, visited, start_y, start_x - 1) == 0)
+		return (0);
+	if (ft_dfs(game, visited, start_y, start_x + 1) == 0)
+		return (0);
+	return (1);
 }
 
 char	**ft_map_copy(t_game *game)
@@ -94,21 +110,24 @@ char	**ft_map_copy(t_game *game)
 	return (visited);
 }
 
-void	ft_path(t_game *game)
+int	ft_path(t_game *game)
 {
 	char	**visited;
+	int		count;
 
+	count = 0;
 	visited = ft_map_copy(game);
-	ft_printf("ft_printf in ft_path in ft_check_map\n");
-	ft_printf("visited arr row  = %d\n", game->map.i);
-	ft_printf("visited arr column = %d\n", game->map.j);
-	if (ft_dfs(game, visited, game->player.y,
-			game->player.x) == 1)
-		ft_printf("\n\n\n\nTHERE IS A VALID PATH!\n\n\n\n");
-	else
-		ft_printf("\n\n\n\nTHERE IS NOT A VALID PATH!\n\n\n\n");
-	ft_printf("ft_printf in ft_path in ft_check_map.c\n");
-	ft_printf("check on visited arr\n");
+	// ft_printf("ft_printf in ft_path in ft_check_map\n");
+	// ft_printf("visited arr row  = %d\n", game->map.i);
+	// ft_printf("visited arr column = %d\n", game->map.j);
+	// if (ft_dfs(game, visited, game->player.y,
+	// 		game->player.x) == 0)
+	// 	ft_printf("\n\n\n\nTHERE IS A VALID PATH!\n\n\n\n");
+	// else
+	// 	ft_printf("\n\n\n\nTHERE IS NOT A VALID PATH!\n\n\n\n");
+	ft_dfs(game, visited, game->player.y, game->player.x);
+	// ft_printf("ft_printf in ft_path in ft_check_map.c\n");
+	// ft_printf("check on visited arr\n");
 	game->map.i = 0;
 	while (game->map.i < game->map.row)
 	{
@@ -121,7 +140,9 @@ void	ft_path(t_game *game)
 		ft_printf("\n");
 		game->map.i++;
 	}
-	// ft_printf("the amount of collectibles = %d\n", ft_collect_path(game, visited));
+	count = ft_exit_col_path_check(game, visited);
+	// ft_printf("the amount of collectibles = %d\n", ft_exit_col_path_check(game, visited));
 	// ft_printf("\n\n\nCOLLECTILBES TESTESTEST = %d\n\n\n", game->collectible[0].count);
 	ft_free_visited(game, visited);
+	return (count);
 }
