@@ -11,13 +11,62 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "ft_create_arr_utils.h"
+
+void	ft_get_col_row(t_game *game)
+{
+	int	is_correct;
+	int	tmp_column;
+
+	is_correct = 0;
+	tmp_column = 0;
+	while (1)
+	{
+		game->map.line = get_next_line(game->map.fd_map);
+		if (game->map.line == NULL)
+			break ;
+		game->map.column = ft_strlen(game->map.line) - 1;
+		if (tmp_column == 0)
+			tmp_column = game->map.column;
+		if (tmp_column != game->map.column)
+			is_correct = 1;
+		game->map.row++;
+		free(game->map.line);
+	}
+	if (is_correct == 1)
+	{
+		perror("Column lengths are not equal...");
+		close(game->map.fd_map);
+		exit(1);
+	}
+}
+
+void	ft_malloc_check(t_map *map)
+{
+	map->j = 0;
+	if (map->map_arr[map->i] == NULL)
+	{
+		while (map->j++ < map->i)
+			free(map->map_arr[map->j]);
+		free (map->map_arr);
+		exit (1);
+	}
+}
+
+void	ft_init_map(t_map *map)
+{
+	map->fd_map = open("maps/map.ber", O_RDONLY);
+	if (map->fd_map < 0)
+	{
+		perror("Error while loading a map...");
+		exit(1);
+	}
+}
 
 void	ft_create_arr(t_game *game)
 {
 	game->map.i = 0;
 	game->map.row = 0;
-	ft_map_init(&game->map);
+	ft_init_map(&game->map);
 	ft_get_col_row(game);
 	game->map.map_arr = (char **)malloc(game->map.row * sizeof(char *));
 	if (game->map.map_arr == NULL)
