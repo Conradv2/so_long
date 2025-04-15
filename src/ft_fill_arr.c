@@ -11,12 +11,11 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "ft_create_arr_utils.h"
 
 void	ft_fill_arr(t_game *game)
 {
 	game->map.j = 0;
-	ft_map_init(&game->map);
+	ft_init_map(&game->map);
 	game->map.i = 0;
 	while (1)
 	{
