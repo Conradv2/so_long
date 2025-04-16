@@ -15,15 +15,53 @@
 
 int	ft_key_input(int keysym, t_game *game)
 {
-	ft_printf("%d is being pressed\n", keysym);
+	// ft_printf("%d is being pressed\n", keysym);
 	if (keysym == XK_Escape)
 	{
 		ft_printf("Pressed Esc, closing game!\n");
 		ft_exit_game(game);
 	}
+	// if (keysym == XK_a)
+	// {
+	// 	ft_printf("TEST\n");
+	// }
+	ft_printf("TEST OF MOVEMENT!\n");
 	if (keysym == XK_a)
 	{
-		ft_printf("TEST\n");
+		if (game->map.map_arr[game->player.y][game->player.x - 1] != '1')
+		{
+			game->map.map_arr[game->player.y][game->player.x - 1] = 'P';
+			game->map.map_arr[game->player.y][game->player.x] = '0';
+			game->player.x -= 1;
+		}
 	}
+	if (keysym == XK_d)
+	{
+		if (game->map.map_arr[game->player.y][game->player.x + 1] != '1')
+		{
+			game->map.map_arr[game->player.y][game->player.x + 1] = 'P';
+			game->map.map_arr[game->player.y][game->player.x] = '0';
+			game->player.x += 1;
+		}
+	}
+	if (keysym == XK_w)
+	{
+		if (game->map.map_arr[game->player.y - 1][game->player.x] != '1')
+		{
+			game->map.map_arr[game->player.y - 1][game->player.x] = 'P';
+			game->map.map_arr[game->player.y][game->player.x] = '0';
+			game->player.y -= 1;
+		}
+	}
+	if (keysym == XK_s)
+	{
+		if (game->map.map_arr[game->player.y + 1][game->player.x] != '1')
+		{
+			game->map.map_arr[game->player.y + 1][game->player.x] = 'P';
+			game->map.map_arr[game->player.y][game->player.x] = '0';
+			game->player.y += 1;
+		}
+	}
+	ft_print_arr(game);
 	return (0);
 }
