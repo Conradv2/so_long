@@ -21,10 +21,6 @@ int	ft_key_input(int keysym, t_game *game)
 		ft_printf("Pressed Esc, closing game!\n");
 		ft_exit_game(game);
 	}
-	// if (keysym == XK_a)
-	// {
-	// 	ft_printf("TEST\n");
-	// }
 	ft_printf("TEST OF MOVEMENT!\n");
 	if (keysym == XK_a)
 	{
