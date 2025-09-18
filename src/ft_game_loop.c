@@ -6,7 +6,7 @@
 /*   By: kkruszyn <kkruszyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 23:27:25 by conradv2          #+#    #+#             */
-/*   Updated: 2025/09/18 14:45:35 by kkruszyn         ###   ########.fr       */
+/*   Updated: 2025/09/18 14:50:09 by kkruszyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	test_rendering_game(t_game *game)
 
 void	ft_game_loop(t_game *game)
 {
-	mlx_key_hook(game->mlx_win, ft_key_input, game);
 	test_rendering_game(game);
+	mlx_key_hook(game->mlx_win, ft_key_input, game);
 	mlx_loop(game->mlx);
 	mlx_destroy_window(game->mlx, game->mlx_win);
 	mlx_destroy_display(game->mlx);
